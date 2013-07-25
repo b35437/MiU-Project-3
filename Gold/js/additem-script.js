@@ -1,6 +1,7 @@
 //Name: Nathan Byarley
 //Project: MiU Week 1
 //Term: 1307
+//Gold
 
 //wait until the DOM has loaded
 window.addEventListener("DOMContentLoaded", function Elist() { 
@@ -156,8 +157,23 @@ window.addEventListener("DOMContentLoaded", function Elist() {
 			
 	}
 	
+	var storage = function() {
+		var output = "";
+		for(var i = 0; &lt; = localStorage.length -1; i++) {
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			
+			if (i == 0) {
+				output = value;
+				} else {
+				output = output + '\n' + value;
+				}
+			}
+		}
+	}
+	
 	//Get data function
-	function getData() {
+	/* function getData() {
 		//change display scrren
 		newDisplay("on");
 		
@@ -207,7 +223,7 @@ window.addEventListener("DOMContentLoaded", function Elist() {
 				}
 				createLinks(localStorage.key(i), linksLi); //creates the edit and deleat links
 			}
-		}
+		} */
 		
 	//get img function
 	function getImg(category, createSubList){
@@ -351,14 +367,6 @@ window.addEventListener("DOMContentLoaded", function Elist() {
 	//save event
 	var save = byId("saveBtn");
 	save.addEventListener("click", validate);
-	
-	var searchButton = byId("submit");
-	
-	var getSearch = function() {
-	
-	}
-	
-
 
 });//End of window Listener
 

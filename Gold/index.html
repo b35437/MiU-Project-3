@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- Name: Nathan Byarley -->
 <!-- GOLD -->
-<!-- Project: MiU Week 1 -->
+<!-- Project: MiU Week 3 -->
 <!-- Term: 1307 -->
 
 <html>   
@@ -9,7 +9,7 @@
 		<meta charset="utf-8">
 		<meta name="description" content="Add Equipment information based on game of your choice">
 		<meta name="keywords" content="game, equipment list" />
-		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="robots" content="index, follow"/>
 		<meta name="viewport" content="user-scalable=no, width=device-width"/>
 		<meta name="HandheldFriendly" content="true"/>
@@ -18,12 +18,14 @@
 		<meta name="viewport" content="target-densitydpi=device-dpi" />
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/index-style.css">
-		<link href="css/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
         <!-- JS Modernizer stays at the top as it enables HTML elements -->
-		<script src="js/modernizr.custom.js" type="text/javascript"></script>
+		<script src="js/libs/modernizr.custom.js" type="text/javascript"></script>
+	
+
         
-		<!--Title-->
-		<title>Add Equipment Form</title>
+		<!------------Title----------------->
+	<title>Add Equipment Form</title>
 	</head>
 	<!-- Body -->
 	<body>
@@ -35,7 +37,7 @@
     		</div>
     		<!-- feature image with link for additem page -->
      		<div id="top-image">
-    			<a href="additem.html" data-ajax="false"><img src="img/feature.png" alt="Equipment List"></a>
+    			<a href="#addItem" data-ajax="false"><img src="img/feature.png" alt="Equipment List"></a>
         	</div>
         	<!-- start content section within the JQuery Page -->
     		<div data-role="content">
@@ -43,39 +45,40 @@
                     <li data-role="list-divider">Browse Equipment By...</li>
          
                     <!-- first browse link -->
-                    <li><a href="#equipmentName" data-ajax="false" id="equipment">
+                    <li><a href="#equipmentNameSearch" data-ajax="false" id="equipmentBtn">
                     <img src="img/E.png">
                     <h3>Equipment Name</h3>
                     <p>Browse Name</p>
                     </a></li>
                     
                     <!-- second browse link -->
-                    <li><a href="#slot" data-ajax="false" id="slot">
+                    <li><a href="#slotSearch" data-ajax="false" id="slotBtn">
                     <img src="img/S.png">
                     <h3>Slot</h3>
                     <p>Browse Slot</p>
                     </a></li>
               
                     <!-- third browse Link -->
-                    <li><a href="#rarity" data-ajax="false" id="rarity">
+                    <li><a href="#rareSearch" data-ajax="false" id="rarityBtn">
                     <img src="img/R.png">
                     <h3>Rarity</h3>
                     <p>Browse Rarity</p>
                     </a></li>
               
                     <!-- fourth browse link -->
-                    <li><a href="#level" data-ajax="false" id="level">
+                    <li><a href="#levelSearch" data-ajax="false" id="levelBtn">
                     <img src="img/L.png">
                     <h3>Level</h3>
                     <p>Browse Level</p>
                     </a></li>
                     
                     <!-- fifth browse link -->
-                    <li><a href="#date" data-ajax="false" id="date">
+                    <li><a href="#dateSearch" data-ajax="false" id="dateBtn">
                     <img src="img/D.png">
                     <h3>Date</h3>
                     <p>Browse Date Added</p>
                     </a></li>
+                    
             	</ul>
    	  		</div> <!-- End Content div -->
             <div data-role="footer" data-position="fixed">
@@ -91,35 +94,16 @@
    		
   					<!------- USING THE ONE-WINDOW DRILLDOWN PATERN ----------->
   
-        <!-- Start Equipment Name Page -->
-        <div data-role="page" id="equipmentName" data-theme="a">
+        <!------------------------------------- Start Equipment Name Page -------------------------------------->
+    <div data-role="page" id="equipmentNameSearch" data-theme="a">
           <div data-role="header" data-position="fixed">
           <a href="#" data-rel="back" data-icon="back">Back</a>
             <h1>Equipment Name</h1>
           </div> <!-- End Header div -->
-          <div data-role="content">
-            <h3>Your Equipment Information when you need it!</h3>
-            <br/>
-          		<ul data-inset="false" data-role="listview" id="fullList" data-theme="a" data-filter-placeholder="Search Equipment...">
-                    <div class="ui-grid-b">
-                              <div class="ui-block-a"><img alt="feet" src="img/Feet.jpg" width=66px height=66px /></div>
-                              <div class="ui-block-b"><img alt="chest" src="img/Chest.jpg" width=66px height=66px /></div>
-                              <div class="ui-block-c"><img alt="back" src="img/Back.jpg" width=66px height=66px /></div>
-                              <div class="ui-block-a"><a href="#error" >Boots of<br/> Speed</a></div>
-                              <div class="ui-block-b"><a href="#error" >Chest of<br/> Thorns</a></div>
-                        	  <div class="ui-block-c"><a href="#error" >Shroud of Darkness</a></div> 
-                      	  </div>
-                          <br />
-                          <div class="ui-grid-b">
-                              <div class="ui-block-a"><img alt="gloves" src="img/Gloves.jpg" width=66px height=66px /></div>
-                              <div class="ui-block-b"><img alt="neck" src="img/Neck.jpg" width=66px height=66px /></div>
-                              <div class="ui-block-c"><img alt="ring" src="img/Left Ring.jpg" width=66px height=66px /></div>
-                              <div class="ui-block-a"><a href="#error" >Gloves of<br/> Might</a></div>
-                              <div class="ui-block-b"><a href="#error" >Necklace of Sight</a></div>
-                        	  <div class="ui-block-c"><a href="#error" >Ring of<br/> Health</a></div> 
-                      	  </div>     	  
-          		</ul>
-          	</div>
+          <!-- Content will display information pulled from JSON -->
+          <div data-role="content">	
+			<ul data-role="listview" id="equipmentList" data-collapsed="false"  data-inset="true" data-filter="true" data-theme="a"></ul>
+		</div>
           <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
               	<ul>
@@ -131,14 +115,38 @@
           </div><!-- End Footer Div -->
         </div> <!-- End Equipment Page Div -->
         
-        <!-- Start Slot Page -->
-    <div data-role="page" id="slot" data-theme="a">
+        <!------------------------------------- Start showdata Page -------------------------------------->
+    <div data-role="page" id="showdata" data-theme="a">
+	<div data-role="header" data-position="fixed" data-theme="a" >
+	    <a href="#" data-rel="back" data-icon="back">Back</a>
+	    <h1>Display</h1>
+	</div>
+	<div data-role="content" id="dataView">
+	    <img src="img/404.jpg" width="300px" height="100px" />
+	    
+	</div>
+	
+	<div data-role="footer" data-position="fixed" data-theme="a" data-id="home">
+	    <div data-role="navbar">
+          <ul>
+              <li><a href="#goldPg" data-icon="home" data-iconpos="top">Home</a></li>
+               <li><a href="#recent" data-icon="grid" data-iconpos="top">Recently Added</a></li>
+               <li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+          </ul>	    
+        </div>
+	</div>	
+    </div> <!-- End Show Data -->
+        
+        <!------------------------------ Start Slot Page -------------------------------->
+    <div data-role="page" id="slotSearch" data-theme="a">
           <div data-role="header" data-position="fixed">
           <a href="#" data-rel="back" data-icon="back">Back</a>
             <h1>Slot</h1>
       </div> <!-- End Header div -->
-          <div data-role="content"><img src="img/404.jpg" width="300" height="100">
-	<p>Page cannot be displayed.</p></div>
+          <div data-role="content">
+				<!-- Content will display information pulled from JSON -->
+			<ul data-role="listview" id="slotList" data-collapsed="false" data-inset="true" data-filter="true"></ul>	
+		</div>
           <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
               	<ul>
@@ -150,14 +158,15 @@
           </div><!-- End Footer Div -->
         </div> <!-- End Slot Page Div -->
         
-        <!-- Start Rarity Page -->
-    <div data-role="page" id="rarity" data-theme="a">
+        <!---------------------------------------- Start Rarity Page --------------------------------------------->
+    <div data-role="page" id="rareSearch" data-theme="a">
           <div data-role="header" data-position="fixed">
           <a href="#" data-rel="back" data-icon="back">Back</a>
             <h1>Rarity</h1>
           </div> <!-- End Header div -->
-          <div data-role="content"><img src="img/404.jpg" width="300" height="100">
-	<p>Page cannot be displayed.</p></div>
+          <div data-role="content">
+			<ul data-role="listview" id="rarityList" data-collapsed="false" data-inset="true" data-filter="true"></ul>
+		</div>
           <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
               	<ul>
@@ -169,14 +178,17 @@
           </div><!-- End Footer Div -->
         </div> <!-- End Rarity Page Div -->
         
-        <!-- Start Level Page -->
-    <div data-role="page" id="level" data-theme="a">
+        <!--------------------------------------- Start Level Page ----------------------------------------->
+    <div data-role="page" id="levelSearch" data-theme="a">
           <div data-role="header" data-position="fixed">
           <a href="#" data-rel="back" data-icon="back">Back</a>
             <h1>Level</h1>
           </div> <!-- End Header div -->
-          <div data-role="content"><img src="img/404.jpg" width="300" height="100">
-	<p>Page cannot be displayed.</p></div>
+          <div data-role="content">
+				<!-- Content will display information pulled from JSON -->
+			<ul data-role="listview" id="levelList" data-collapsed="false"  data-inset="true" data-filter="true" data-theme="a"></ul>
+		
+		</div>
           <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
               	<ul>
@@ -188,15 +200,17 @@
           </div><!-- End Footer Div -->
         </div> <!-- End level Page Div -->
         
-        <!-- Start Date Page -->
-    <div data-role="page" id="date" data-theme="a">
+        <!-------------------------------------------- Start Date Page --------------------------------------------->
+    <div data-role="page" id="dateSearch" data-theme="a">
           <div data-role="header" data-position="fixed">
           <a href="#" data-rel="back" data-icon="back">Back</a>
             <h1>Date</h1>
           </div> <!-- End Header div -->
-          <div data-role="content"><img src="img/404.jpg" width="300" height="100">
-	<p>Page cannot be displayed.</p></div>
-          <div data-role="footer" data-position="fixed">
+          <div data-role="content">
+				<!-- Content will display information pulled from JSON -->
+			<ul data-role="listview" id="dateList" data-collapsed="false"  data-inset="true" data-filter="true" data-theme="a"></ul>
+		</div>          
+		<div data-role="footer" data-position="fixed">
             <div data-role="navbar">
               	<ul>
               		<li><a href="#goldPg" data-icon="home" data-iconpos="top">Home</a></li>
@@ -207,7 +221,7 @@
           </div><!-- End Footer Div -->
         </div> <!-- End Date Page Div -->
         
-        <!-- Start About Page -->
+        <!------------------------------- Start About Page ----------------------------------->
     <div data-role="page" id="about" data-theme="a">
           <div data-role="header" data-position="fixed">
           <a href="#" data-rel="back" data-icon="back">Back</a>
@@ -233,7 +247,7 @@
           </div><!-- End Footer Div -->
         </div> <!-- End About Page Div -->
         
-        <!-- Start Revently Added Page -->
+        <!------------------------------------------- Start Recently Added Page --------------------------------------->
     <div data-role="page" id="recent" data-theme="a">
           <div data-role="header" data-position="fixed">
           <a href="#" data-rel="back" data-icon="back">Back</a>
@@ -247,7 +261,7 @@
                     <li>
                     <img src="img/Feet.jpg" id="imgThumb">
                     <h3>Boots of Speed</h3>
-                    <p>Added on: 09 July 2013</p>
+                    <p>Added on: 21 July 2013</p>
                     </li>
                     
                     <!-- second link -->
@@ -261,7 +275,7 @@
                     <li>
                     <img src="img/Shoulders.jpg" id="imgThumb">
                     <h3>Shroud of Darkness</h3>
-                    <p>Added on: 21 July 2013</p>
+                    <p>Added on: 09 July 2013</p>
                     </li>
               		
                     <!-- Divider -->
@@ -271,7 +285,7 @@
                     <li>
                     <img src="img/Gloves.jpg" id="imgThumb">
                     <h3>Gloves of Might</h3>
-                    <p>Added on: 14 June 2013</p>
+                    <p>Added on: 27 June 2013</p>
                     </li>
                     
                     <!-- fifth link -->
@@ -285,7 +299,7 @@
                     <li>
                     <img src="img/Left Ring.jpg" id="imgThumb">
                     <h3>Ring of Health</h3>
-                    <p>Added on: 27 June 2013</p>
+                    <p>Added on: 14 June 2013</p>
                     </li>
             	</ul>
    	  		</div> <!-- End Content div -->
@@ -300,7 +314,7 @@
           </div><!-- End Footer Div -->
         </div> <!-- End Recently Added Page Div -->
         
-        <!-- Start Error Page -->
+        <!------------------------------------------ Start Error Page ------------------------------------------------>
     <div data-role="page" id="error" data-theme="a">
           <div data-role="header" data-position="fixed">
           <a href="#" data-rel="back" data-icon="back">Back</a>
@@ -319,10 +333,133 @@
           </div><!-- End Footer Div -->
         </div> <!-- End Slot Page Div -->
         
-    
-    	<!-- JavaScript -->
-		<script  type="text/javascript" src=""></script>
-		<script src="js/jquery-1.6.4.min.js" type="text/javascript"></script>
-    	<script src="js/jquery.mobile-1.0.min.js" type="text/javascript"></script>
-	</body>
+        
+        <!------------------------------------------- Add Equipment Form --------------------------------------------->
+    <div data-role="page" id="addItem" data-theme="a">
+          <div data-role="header" data-position="fixed">
+          <a href="#" data-rel="back" data-icon="back">Back</a>
+            <h1>Add Equipment</h1>
+          </div>
+          <div data-role="content">
+          
+          	<!-- Form Information -->
+            <form id="equipmentForm" action="#" method="post">
+            <fieldset>
+            	<span><span class="red">*</span>Required Fields.</span>
+            	<br />
+            	<br />
+            	<div data-role="fieldcontain">
+	            	<div class="ui-grid-a">
+            		<div class="ui-block-a"><a href="#" data-role="button" class="clear" id="cleardata">Clear Storage</a></div>
+            	  	<div class="ui-block-b"><a class="display" href="#showdata" id="showdataBtn" data-role="button" data-theme="a">Display All</a></div>
+	            </div>
+          	  </div>
+
+            	
+
+<!-- Item Slot -->
+                  <div data-role="fieldcontain">
+                    <label for="itemList" class="select"><span class="red">*</span>Item Slot:</label>
+                    <select name="itemList" id="itemList" data-native-menu="false" class="required" >
+                      <option value="" data-placeholder="true" class="required">--- Select A Slot ---</option>
+                      <option value="Belt" class="required">Belt</option>
+                      <option value="Chest">Chest</option>
+                      <option value="Feet">Feet</option>
+                      <option value="Gloves">Gloves</option>
+                      <option value="Helmet">Helmet</option>
+                      <option value="Pants">Pants</option>
+                      <option value="Shoulders">Shoulders</option>
+                      <option value="Back">Back</option>
+                      <option value="Main Hand">Main Hand</option>
+                      <option value="Off Hand">Off Hand</option>
+                      <option value="Two Handed">Two Handed</option>
+                      <option value="Neck">Neck</option>
+                      <option value="Left Ring">Left Ring</option>
+                      <option value="Right Ring">Right Ring</option>
+                    </select>
+                  </div>
+                  
+                  <!-- equipment name -->
+            	<div data-role="fieldcontain">
+            	  <label for="ename"><span class="red">*</span>Equipment Name:</label>
+            	  <input type="text" id="ename" name="ename" class="required" placeholder="Enter Name of Equipment"/>
+          	  </div>
+
+            	<!-- Rarity -->
+            	<div data-role="fieldcontain">
+            	  <fieldset data-role="controlgroup">
+            	    <legend>Rarity</legend>
+            	    <label for="common">Common</label>
+            	    <input type="radio" value="Common" id="common" name="rarity" />
+            	    
+            	    <label for="uncommon">Uncommon</label>
+					<input type="radio" value="Uncommon" id="uncommon" name="rarity" />
+					
+					<label for="rare">Rare</label>
+					<input type="radio" value="Rare" id="rare" name="rarity" />
+					
+					<label for="epic">Epic</label>
+					<input type="radio" value="Epic" id="epic" name="rarity" />
+          	    </fieldset>
+          	  </div>
+				<!-- Item Level -->
+				<div data-role="fieldcontain">
+				  <label for="islide">Item Level:</label>
+                  <input type="range" min="1" max="80" value="1" step="1" id="islide" name="islide" />
+			  </div>
+
+				<!-- Date Added -->
+				<div data-role="fieldcontain">
+				  <label for="date"><span class="red">*</span>Date Added:</label>
+				  <input type="text" class="date-picker" id="date" class="required date" name="date" />
+				  <p style="font-size:14px">Date Format: YYYY / MM / DD</p>
+			  </div>
+
+				<!-- Save to List -->
+				<div data-role="fieldcontain">
+				  <fieldset data-role="controlgroup">
+				    <legend>Save Item to Personal List</legend>
+				    <input type="checkbox" id="saveTo" name="saveTo"/>
+				    <label for="saveTo">Save Item</label>
+                    <p style="font-size:14px">Saves the item to your personal equipment list</p>
+			      </fieldset>
+			  </div>
+
+				<!-- Notes -->
+				<div data-role="fieldcontain">
+				  <label for="note">Additional Notes:</label>
+				  <textarea id="note" name="note" placeholder="Add additional notes about the item"></textarea>
+			  </div>
+              </fieldset>
+            
+				<div class="ui-grid-a">
+            	  <div class="ui-block-a"><input type="submit" value="Add Item" id="saveBtn" data-theme="b"/>
+</div>
+            	  <div class="ui-block-b"><input id="resetForm"  type="reset" value="Reset Form" /></div>
+            </form>
+          
+          </div>
+          <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+              	<ul>
+              		<li><a href="#goldPg" data-icon="home" data-iconpos="top">Home</a></li>
+                	<li><a href="#recent" data-icon="grid" data-iconpos="top">Recently Added</a></li>
+                	<li><a href="#about" data-icon="info" data-iconpos="top">About</a></li>
+                </ul>
+              </div> 
+          </div><!-- End Footer Div -->
+        </div> <!-- End add equipment -->
+        
+</body>
+
+		<!-- JavaScript -->
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+		<script src="js/libs/jquery.validate.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/json.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+		
+		
+        
+    	
 </html>
